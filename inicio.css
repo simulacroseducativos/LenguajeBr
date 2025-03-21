@@ -10,6 +10,8 @@ body {
     display: flex; 
     justify-content: center; 
     align-items: center; 
+    flex-direction: column;
+    padding: 20px;
 }
 
 .background-overlay {
@@ -69,15 +71,17 @@ p {
 
 .info-container {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .info-box {
     background: rgba(183, 0, 255, 0.384);
     color: rgb(0, 225, 255);
     padding: 20px;
-    width: 100%;
+    width: 90%;
+    max-width: 600px;
     border-radius: 50px;
     text-align: center; 
     display: flex;
