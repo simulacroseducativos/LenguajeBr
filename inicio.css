@@ -100,25 +100,33 @@ p {
     box-shadow: 0 8px 20px rgba(58, 57, 57, 0.5); 
 }
 
-#boton-sonido {
+.button {
     display: inline-block;
     padding: 15px 40px;
-    margin-top: 15px; 
+    margin-top: 15px;
     font-size: 1.2em;
     font-weight: bold;
     color: white;
     background: linear-gradient(90deg, #176eb6, #179ce9);
     text-decoration: none;
     border-radius: 50px;
-    border: #52d685;
+    border: none;
     transition: all 0.3s ease;
     box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.3);
 }
 
-#boton-sonido:hover {
+.button:hover {
     background: linear-gradient(90deg, #179ce9, #176eb6);
     transform: scale(1.1);
     box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.5);
+}
+
+#boton-sonido {
+    border: 2px solid rgba(144, 149, 185, 0);
+}
+
+#boton-sonido {
+    color:rgb(255, 255, 255)
 }
 
 @keyframes fadeIn {
