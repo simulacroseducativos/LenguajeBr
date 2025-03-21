@@ -130,18 +130,17 @@
         const reiniciarSound = new Audio('seleccion.mp3');
         const salirSound = new Audio('sonido.mp3');
     
-        // Función para mezclar el arreglo de preguntas
         function shuffleQuestions() {
             for (let i = questions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [questions[i], questions[j]] = [questions[j], questions[i]]; // Intercambia las preguntas
+                [questions[i], questions[j]] = [questions[j], questions[i]]; 
             }
         }
     
         function playSoundAndReload() {
             reiniciarSound.play();
             reiniciarSound.onended = () => {
-                shuffleQuestions();  // Mezcla las preguntas antes de recargar
+                shuffleQuestions();  
                 location.reload();
             };
         }
@@ -151,7 +150,7 @@
             salirSound.onended = () => {
                 const confirmExit = window.confirm("¿Estás seguro que quieres salir del juego?");
                 if (confirmExit) {
-                    window.location.href = "inicio.html";
+                    window.location.href = "index.html";
                 }
             };
         }
