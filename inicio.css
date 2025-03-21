@@ -1,17 +1,14 @@
 body {
     font-family: 'Arial', sans-serif;
-    height: 100vh;
     margin: 0;
     background: url('images/fondo.jpg') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden;
     color: rgb(255, 255, 255);
-    position: relative;
     display: flex; 
     justify-content: center; 
     align-items: center; 
-    flex-direction: column;
-    padding: 20px;
+    height: 100vh;
+    width: 100vw;
 }
 
 .background-overlay {
@@ -25,8 +22,13 @@ body {
 }
 
 .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; 
+    max-width: 800px; 
     text-align: center;
-    position: relative;
     z-index: 2;
     animation: fadeIn 1s ease-in-out; 
 }
@@ -37,6 +39,7 @@ h1 {
     margin-bottom: 20px;
     animation: bounce 1.5s infinite; 
 }
+
 .title-box {
     background: rgba(255, 217, 2, 0.445);
     border-radius: 100px; 
@@ -46,14 +49,13 @@ h1 {
     text-align: center; 
 }
 
-
 h2 {
     color: #ffffff;
 
 }
 
 h3 {
-    color:rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
     background: rgba(0, 255, 255, 0.685);
     border-radius: 100px; 
     padding: 10px 20px; 
@@ -61,7 +63,6 @@ h3 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
     text-align: center; 
 }
-
 
 p {
     font-size: 1.2em;
@@ -95,6 +96,7 @@ p {
 .info-box p {
     font-size: 1.1em;
 }
+
 .info-box:hover {
     transform: translateY(-10px); 
     box-shadow: 0 8px 20px rgba(58, 57, 57, 0.5); 
