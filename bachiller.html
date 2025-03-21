@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Lengua Castellana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('images/fondojuego.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .main-container {
+            text-align: center;
+            background: rgba(255, 251, 0, 0.411);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 800px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            color: #000000;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #000000;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin: 20px 0;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1em;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #fda085, #f6d365);
+            transform: translateY(-3px);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .message {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Juego de Lengua Castellana</h1>
+        <p>Adivina la palabra según las pistas.</p>
+        <h2 id="hint">Pista: Palabra que indica acción o estado.</h2>
+        <div class="input-container">
+            <input type="text" id="guessInput" placeholder="Escribe tu respuesta">
+            <button onclick="checkAnswer()">Enviar</button>
+        </div>
+        <p class="message" id="message"></p>
+        <div class="button-container">
+            <button onclick="playSoundAndReload()">Reiniciar</button>
+            <button onclick="playSoundAndExit()">Salir</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            { hint: "¿Qué preposición se usa en 'El libro está sobre la mesa'?", answer: ["sobre", "Sobre"] },
+            { hint: "Expresión que se usa para pedir permiso o ser educado.", answer: ["por favor", "Por favor"] },
+            { hint: "¿Quién escribió 'Don Quijote de la Mancha'?", answer: ["Cervantes", "cervantes"] },
+            { hint: "Es un grupo de palabras que tiene sujeto y predicado.", answer: ["oracion", "Oración"] },
+            { hint: "¿Cómo se llama el tiempo verbal de 'yo como'?", answer: ["presente", "Presente"] },
+            { hint: "¿Cómo se llama la tilde que se usa en 'rápido'?", answer: ["acento", "Acento"] },
+            { hint: "Conjunto de palabras que forma un significado completo.", answer: ["frase", "Frase"] },
+            { hint: "¿Cómo se llama la palabra que describe a un sustantivo?", answer: ["adjetivo", "Adjetivo"] },
+            { hint: "¿Cuál es el antónimo de 'fácil'?", answer: ["dificil", "Difícil"] },
+            { hint: "¿Cuál es el antónimo de 'inteligente'?", answer: ["tonto", "Tonto"] },
+            { hint: "¿Cuál es el antónimo de 'bajo'?", answer: ["alto", "Alto"] }
+        ];
+    
+        let currentQuestion = 0;
+        const reiniciarSound = new Audio('seleccion.mp3');
+        const salirSound = new Audio('sonido.mp3');
+    
+        // Función para mezclar el arreglo de preguntas
+        function shuffleQuestions() {
+            for (let i = questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questions[i], questions[j]] = [questions[j], questions[i]]; // Intercambia las preguntas
+            }
+        }
+    
+        function playSoundAndReload() {
+            reiniciarSound.play();
+            reiniciarSound.onended = () => {
+                shuffleQuestions();  // Mezcla las preguntas antes de recargar
+                location.reload();
+            };
+        }
+    
+        function playSoundAndExit() {
+            salirSound.play();
+            salirSound.onended = () => {
+                const confirmExit = window.confirm("¿Estás seguro que quieres salir del juego?");
+                if (confirmExit) {
+                    window.location.href = "inicio.html";
+                }
+            };
+        }
+    
+        function updateHint() {
+            document.getElementById("hint").textContent = questions[currentQuestion].hint;
+        }
+    
+        function resetInput() {
+            document.getElementById("guessInput").value = "";
+        }
+    
+        function checkAnswer() {
+            const userInput = document.getElementById("guessInput").value.trim();
+            const messageElement = document.getElementById("message");
+    
+            if (questions[currentQuestion].answer.includes(userInput)) {
+                messageElement.textContent = "¡Correcto! 🎉";
+                messageElement.style.color = "green";
+                currentQuestion++;
+            } else {
+                messageElement.textContent = "Incorrecto. Intenta de nuevo. 😕";
+                messageElement.style.color = "red";
+            }
+    
+            resetInput();
+    
+            if (currentQuestion < questions.length) {
+                updateHint();
+            } else {
+                document.getElementById("hint").textContent = "¡Felicidades! Has completado el juego. 🎊";
+                document.querySelector(".input-container").style.display = "none";
+            }
+        }
+    
+        window.onload = function() {
+            shuffleQuestions();  // Mezcla las preguntas al cargar la página
+            updateHint();
+        };
+    </script>
+    
+</body>
+</html>
