@@ -1,103 +1,83 @@
 body {
     font-family: 'Arial', sans-serif;
-    height: 100vh;
+    height: 100vh; 
     margin: 0;
     background: url('images/fondo.jpg') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden;
-    color: rgb(255, 255, 255);
-    position: relative;
+    overflow: hidden; 
+    color: white;
     display: flex; 
     justify-content: center; 
-    align-items: center; 
-    flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    flex-direction: column; 
+    padding: 10px;
 }
 
 .background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(140, 179, 148, 0.6); 
-    z-index: 1;
+    position: fixed;
+    inset: 0; /* Hace que ocupe toda la pantalla */
+    background: rgba(140, 179, 148, 0.6);
 }
 
 .container {
     text-align: center;
-    position: relative;
     z-index: 2;
     animation: fadeIn 1s ease-in-out; 
+    width: 100%;
+    max-width: 90%;  
+    max-height: 90vh;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 h1 {
-    color: #ffffff;
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: clamp(2em, 5vw, 2.5em); /* Se adapta al tamaño del contenedor */
+    margin-bottom: 15px;
     animation: bounce 1.5s infinite; 
 }
+
 .title-box {
-    background: rgba(255, 217, 2, 0.445);
+    background: rgba(255, 217, 2, 0.7);
     border-radius: 100px; 
-    padding: 10px 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    padding: 8px 15px; 
+    margin-bottom: 15px; 
     text-align: center; 
-}
-
-
-h2 {
-    color: #ffffff;
-
 }
 
 h3 {
-    color:rgb(0, 0, 0);
-    background: rgba(0, 255, 255, 0.685);
-    border-radius: 100px; 
-    padding: 10px 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-    text-align: center; 
+    background: rgba(0, 255, 255, 0.7);
+    border-radius: 50px;
+    padding: 8px 15px;
+    text-align: center;
 }
 
-
 p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
+    font-size: 1.1em;
     color: #ffffff;
 }
 
 .info-container {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
+    justify-content: center;
 }
 
 .info-box {
-    background: rgba(183, 0, 255, 0.384);
+    background: rgba(183, 0, 255, 0.5);
     color: rgb(0, 225, 255);
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
-    border-radius: 50px;
+    padding: 15px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 30px;
     text-align: center; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
 }
 
-.info-box p {
-    font-size: 1.1em;
-}
 .info-box:hover {
-    transform: translateY(-10px); 
-    box-shadow: 0 8px 20px rgba(58, 57, 57, 0.5); 
+    transform: translateY(-5px); 
 }
 
 .button {
@@ -122,29 +102,25 @@ p {
 }
 
 #boton-sonido {
-    border: 2px solid rgba(144, 149, 185, 0);
+    color: white
 }
 
 #boton-sonido {
-    color:rgb(255, 255, 255)
+    position: relative;
+    z-index: 10;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#boton-sonido{
+    border: 2px solid rgba(0, 68, 255, 0);
 }
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
+@media (max-width: 600px) {
+    .info-box {
+        width: 100%;
     }
-    50% {
-        transform: translateY(-10px);
+
+    .button {
+        font-size: 0.9em;
+        padding: 10px 25px;
     }
 }
