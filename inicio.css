@@ -1,16 +1,16 @@
 body {
     font-family: 'Arial', sans-serif;
-    min-height: 100vh; 
+    height: 100vh;
+    width: 100vw;
     margin: 0;
     background: url('images/fondo.jpg') no-repeat center center fixed;
     background-size: cover;
-    overflow: hidden; 
     color: white;
     position: relative;
-    display: flex; 
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     padding: 20px;
 }
 
@@ -28,21 +28,28 @@ body {
     text-align: center;
     position: relative;
     z-index: 2;
-    animation: fadeIn 1s ease-in-out; 
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-grow: 1;
 }
 
 h1 {
-    font-size: 2.5; 
+    font-size: 2.5em;
     margin-bottom: 20px;
-    animation: bounce 1.5s infinite; 
+    animation: bounce 1.5s infinite;
 }
 
 .title-box {
     background: rgba(255, 217, 2, 0.7);
-    border-radius: 100px; 
-    padding: 10px 20px; 
-    margin-bottom: 20px; 
-    text-align: center; 
+    border-radius: 100px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 h3 {
@@ -61,8 +68,8 @@ p {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    flex-wrap: wrap; 
-    gap: 20px; 
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .info-box {
@@ -72,19 +79,18 @@ p {
     width: 90%;
     max-width: 600px;
     border-radius: 50px;
-    text-align: center; 
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
-    transition: transform 0.3s ease, box-shadow 0.3s ease; 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .info-box:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
-
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .button {
@@ -109,15 +115,9 @@ p {
 }
 
 #boton-sonido {
-    color: white
-}
-
-#boton-sonido {
+    color: white;
     position: relative;
     z-index: 10;
-}
-
-#boton-sonido{
     border: 2px solid rgba(0, 68, 255, 0);
 }
 
